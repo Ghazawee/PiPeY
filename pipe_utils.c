@@ -41,6 +41,7 @@ char	**find_split_path(char **env)
 	int		i;
 
 	i = 0;
+	pathy = NULL;
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
@@ -93,7 +94,7 @@ char	*get_cmd_path(char *cmd, char **env)
 	}
 	paths = find_split_path(env);
 	if (!paths)
-		perror("splitting path failed\n");
+		return (NULL);
 	while (paths[i])
 	{
 		tmp = ft_strjoin(paths[i++], "/");
